@@ -8,6 +8,8 @@ Install dependencies:
 ``docker exec -it app composer install``  
 Do migrations:  
 ``docker exec -it app php yii migrate``  
+Make .env file in the root directory (near composer.json and .env.example)  
+  
 Use:   
     Auth:  
     POST /api/auth/login: Authenticate a user and obtain a JWT token.
