@@ -1,13 +1,13 @@
 How to run:
 
 Clone repository.
-``git clone git@github.com:Yarcrazy/test_fix.git``
+``git clone git@github.com:Yarcrazy/test_fix.git``  
 Up docker:
-``docker compose up -d``
+``docker compose up -d``  
 Install dependencies:
-``docker exec -it app composer install``
+``docker exec -it app composer install``  
 Do migrations:
-``docker exec -it app php yii migrate``
+``docker exec -it app php yii migrate``  
 Use:
     Auth:
     POST /api/auth/login: Authenticate a user and obtain a JWT token.
