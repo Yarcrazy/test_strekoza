@@ -8,8 +8,8 @@ Install dependencies:
 ``docker exec -it app composer install``  
 Do migrations:  
 ``docker exec -it app php yii migrate``  
-Use:  
-    Auth:
+Use:   
+    Auth:  
     POST /api/auth/login: Authenticate a user and obtain a JWT token.
     {"username":"admin","password":"admin123"}
     
