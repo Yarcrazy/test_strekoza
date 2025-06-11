@@ -97,8 +97,6 @@ class TrackController extends ActiveController
 
     public function actionUpdate(int $id): array
     {
-        var_dump(\Yii::$app->request->getParams());
-        die();
         $model = $this->findModel($id);
 
         $model->load(\Yii::$app->request->getParams(), '');
