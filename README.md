@@ -1,3 +1,6 @@
+Task description:  
+https://docs.google.com/document/d/159qFGdpBOXipTf7VOJPgbX2mX24ztwFv0K_Oy2qDUXM/edit?tab=t.0#heading=h.csv02azb0xd2
+
 How to run:
 
 Clone repository.  
