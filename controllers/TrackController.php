@@ -2,7 +2,9 @@
 
 namespace app\controllers;
 
+use app\models\search\TrackSearch;
 use app\models\Track;
+use Yii;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -38,22 +40,10 @@ class TrackController extends Controller
      */
     public function actionIndex()
     {
-        $dataProvider = new ActiveDataProvider([
-            'query' => Track::find(),
-            /*
-            'pagination' => [
-                'pageSize' => 50
-            ],
-            'sort' => [
-                'defaultOrder' => [
-                    'id' => SORT_DESC,
-                ]
-            ],
-            */
-        ]);
+        $model = new TrackSearch();
 
         return $this->render('index', [
-            'dataProvider' => $dataProvider,
+            'dataProvider' => $model->search(Yii::$app->request->queryParams),
         ]);
     }
 

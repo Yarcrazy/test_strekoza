@@ -60,9 +60,6 @@ $config = [
                     'tokens' => [
                         '{id}' => '<id:\d+>',
                     ],
-                    'extraPatterns' => [
-                        'GET ' => 'index',
-                    ],
                 ],
             ],
         ],

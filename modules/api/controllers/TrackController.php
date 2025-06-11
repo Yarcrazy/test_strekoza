@@ -4,24 +4,20 @@ declare(strict_types=1);
 
 namespace app\modules\api\controllers;
 
+use app\models\search\TrackSearch;
 use app\models\Track;
 use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
 use yii\filters\auth\HttpBearerAuth;
 use yii\filters\ContentNegotiator;
 use yii\filters\VerbFilter;
-use yii\rest\ActiveController;
-use yii\rest\Serializer;
+use yii\rest\Controller;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
 
-class TrackController extends ActiveController
+class TrackController extends Controller
 {
     public $modelClass = 'app\\models\\Track';
-    public $serializer = [
-        'class' => Serializer::class,
-        'collectionEnvelope' => 'items',
-    ];
 
     public function behaviors(): array
     {
@@ -67,14 +63,8 @@ class TrackController extends ActiveController
 
     public function actionIndex(): ActiveDataProvider
     {
-        $query = Track::find();
-        if ($status = \Yii::$app->request->get('status')) {
-            $query->andWhere(['status' => $status]);
-        }
-
-        return new ActiveDataProvider([
-            'query' => $query,
-        ]);
+        $searchModel = new TrackSearch();
+        return $searchModel->search(\Yii::$app->request->queryParams);
     }
 
     public function actionView(int $id): Track
@@ -99,7 +89,7 @@ class TrackController extends ActiveController
     {
         $model = $this->findModel($id);
 
-        $model->load(\Yii::$app->request->getParams(), '');
+        $model->load(\Yii::$app->request->getBodyParams(), '');
         if ($model->save()) {
             return $model->attributes;
         }
