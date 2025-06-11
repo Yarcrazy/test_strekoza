@@ -33,7 +33,7 @@ class Track extends ActiveRecord
     public function rules()
     {
         return [
-            [['status'], 'default', 'value' => 'new'],
+            [['status'], 'default', 'value' => TrackStatus::NEW->value],
             [['track_number'], 'required'],
             [['created_at', 'updated_at'], 'safe'],
             [['status'], 'string'],
